@@ -1,13 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Main from "./pages/Main";
 import Register from "./pages/Register";
-import Teacher from "./pages/Teacher";
 
 export default () => {
     return(
         <Routes>
-            <Route path='/' element={<Register/>}/>
-            <Route path='/teacher' element={<Teacher/>}/>
+            <Route path='/' element={<Main/>}/>
+            <Route path='/teacher' element={<Register/>}/>
+            <Route path='/manager' element={<Register/>}/>
+            <Route path='/parents' element={<Register/>}/>
         </Routes>
     );
 }
