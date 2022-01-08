@@ -6,11 +6,11 @@ import Grid from "@material-ui/core/Grid";
 
 import TeacherIcon from "../../assets/Images/icone_prof2.png";
 import ManagerIcon from "../../assets/Images/icone_gestor3.png";
-import ResponsibleIcon from "../../assets/Images/icone_familia2.png";
+import ParentsIcon from "../../assets/Images/icone_familia2.png";
 
 import useStyles from "./styles";
 
-const Register: React.FC = () => {
+const Main: React.FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.register}>
@@ -34,8 +34,8 @@ const Register: React.FC = () => {
               />
               <span>Gestor(a)</span>
             </NavLink>
-            <NavLink to="responsible" className="only-item">
-              <img src={ResponsibleIcon} alt="responsible-icon" />
+            <NavLink to="parents" className="only-item">
+              <img src={ParentsIcon} alt="parents-icon" />
               <span>Responsável</span>
             </NavLink>
             <span style={{ color: "#747474" }}>
@@ -52,4 +52,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default memo(Register);
+export default memo(Main);
