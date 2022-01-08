@@ -10,7 +10,34 @@ const useStyles = makeStyles((theme) =>
         fontFamily: "Montserrat",
         color: "#6C57A8",
         fontSize: "32px",
-        margin: "0",
+        margin: "0 0 0.5rem 0",
+        [theme.breakpoints.down("xs")]: {
+          fontSize: "24px",
+          margin: "1rem 3rem",
+        },
+      },
+      "& .parents-info": {
+        fontFamily: "Source Sans Pro",
+        padding: '0 8rem',
+        [theme.breakpoints.down("xs")]: {
+          padding: "0rem 2rem",
+        },
+      },
+      "& .sub-info": {
+        fontFamily: "Source Sans Pro",
+        padding: '0 2rem',
+        color: '#747474',
+        [theme.breakpoints.down("xs")]: {
+          padding: "0rem 6rem",
+        },
+      },
+      "& span": {
+        fontFamily: "Source Sans Pro",
+        fontWeight: "700",
+        fontSize: "16px",
+      },
+      "& a": {
+        textDecoration: "none",
       },
       "& .content": {
         display: "flex",
@@ -25,54 +52,28 @@ const useStyles = makeStyles((theme) =>
         },
       },
       "& .card": {
-        padding: "2rem",
         backgroundColor: "#FCFCFD",
         width: "744px",
-        height: "346px",
+        height: "100%",
         textAlign: "center",
         margin: "2rem",
-        border: "2px solid #747474",
         borderRadius: "24px",
         [theme.breakpoints.down("xs")]: {
           height: "100%",
           width: "100%",
-          padding: "2rem",
-          margin: "2rem",
+          margin: "8rem 0 0 0",
         },
         [theme.breakpoints.down("md")]: {
           height: "100%",
           width: "100%",
+          marginTop: "3rem",
         },
       },
-      "& .items": {
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        display: "flex",
-        padding: "0.5rem 2rem",
-        cursor: "pointer",
+      "& img": {
+        marginTop: "-37px",
         [theme.breakpoints.down("md")]: {
-          flexDirection: "column",
+          marginTop: "-34px",
         },
-      },
-      "& .only-item": {
-        display: "flex",
-        flexDirection: "column",
-        padding: "1rem 2.5rem",
-        border: "2px solid #C7C7C7",
-        height: "7rem",
-        borderRadius: "16px",
-        margin: "1rem",
-      },
-      "& .only-item > span, span": {
-        fontFamily: "Source Sans Pro",
-        color: "#5E4F9C",
-        fontWeight: "700",
-        fontSize: "16px",
-        marginTop: "0.3rem",
-      },
-      "& a": {
-        textDecoration: "none",
       },
     },
   })
