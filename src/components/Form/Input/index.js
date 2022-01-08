@@ -3,9 +3,6 @@ import React, { memo, ReactNode } from "react";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 import useStyles from "./styles";
-import {InputAdornment} from "@material-ui/core";
-import { IoDiamond } from 'react-icons/io5';
-
 interface IProps {
   icon?: ReactNode;
   label?: string;
