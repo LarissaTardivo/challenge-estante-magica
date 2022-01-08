@@ -13,7 +13,7 @@ import useStyles from "./styles";
 const Main: React.FC = () => {
   const classes = useStyles();
   return (
-    <div className={classes.register}>
+    <div className={classes.main}>
       <Grid item xs={12} className="content">
         <div className="card">
           <div style={{ textAlign: "right", cursor: "pointer" }}>
