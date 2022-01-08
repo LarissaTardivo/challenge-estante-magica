@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) =>
       "& .MuiInputBase-root": {
         width: "100%",
         borderRadius: "8px",
-        margin: "0.3rem 0"
+        margin: "0.6rem 0",
       },
       "& strong": {
         fontFamily: "Source Sans Pro",
         color: "#505050",
         fontSize: "16px",
-      }
+      },
     },
   })
 );
