@@ -9,23 +9,10 @@ import ParentsIcon from "../../assets/Images/icone_familia2.png";
 import useStyles from "./styles";
 import { NavLink } from "react-router-dom";
 
-import { useFormik } from "formik";
 import Form from "./Form";
 import { useLocation } from "react-router-dom";
-import RegisterButtons from "./Buttons/Register";
 
 const Register: React.FC = () => {
-  const formik = useFormik({
-    initialValues: {
-      location: "",
-    },
-    validateOnMount: true,
-    onSubmit: async (values) => {
-      try {
-        console.log(values);
-      } catch (error) {}
-    },
-  });
 
   const classes = useStyles();
   const location = useLocation();
@@ -62,10 +49,7 @@ const Register: React.FC = () => {
               </span>
             </div>
           )}
-          <form onSubmit={formik.handleSubmit}>
-            <Form formik={formik} value={value} />
-          </form>
-          <RegisterButtons />
+          <Form value={value} />
         </div>
       </Grid>
     </div>
