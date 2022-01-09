@@ -11,6 +11,8 @@ import SelectField from "../../../components/Form/Select";
 import { internationalPrefix } from "../../../helpers/internationalPrefix";
 import {Button} from "@material-ui/core";
 
+import InterrogationIcon from "../../../assets/Images/interrogation-icon.png";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
 import {schoolType} from "../../../helpers/schoolType";
@@ -42,6 +44,9 @@ const Form = ({  value }) => {
                     )}
                 />
                 <p className="error">{errors.name?.message}</p>
+                <div style={{ marginLeft: "54px", marginBottom: "-24px"}}>
+                    <img src={InterrogationIcon} alt=""/>
+                </div>
                 <Grid container className="container">
                     <Grid item xs={12} sm={9} md={7} lg={7} xl={7} className="grid">
                         <Controller
