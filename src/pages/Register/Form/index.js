@@ -55,17 +55,19 @@ const Form = ({  value }) => {
                                 />
                             )}
                         />
-                        <Controller
-                            name="phone"
-                            control={control}
-                            render={({ field: { onChange, value } }) => (
-                                <InputField
-                                    placeholder="(00) 00000-0000"
-                                    value={value}
-                                    onChange={onChange}
-                                />
-                            )}
-                        />
+                        <div id="phone-input">
+                            <Controller
+                                name="phone"
+                                control={control}
+                                render={({ field: { onChange, value } }) => (
+                                    <InputField
+                                        placeholder="(00) 00000-0000"
+                                        value={value}
+                                        onChange={onChange}
+                                    />
+                                )}
+                            />
+                        </div>
                     </Grid>
                     <Grid item xs={12} sm={3} md={5} lg={5} xl={5}>
                         <Controller
