@@ -10,6 +10,7 @@ interface IProps {
 
 const InputField: React.FC<IProps> = ({
   formik,
+  onChange,
   endIcon,
   icon,
   name,
@@ -22,8 +23,7 @@ const InputField: React.FC<IProps> = ({
     <div className={classes.input}>
       <strong>{label}</strong>
       <OutlinedInput
-        fullWidth
-        id={name}
+        onChange={onChange}
         name={name}
         placeholder={placeholder}
       />
