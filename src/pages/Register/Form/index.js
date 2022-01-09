@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
+import { useForm, Controller } from 'react-hook-form';
 
 import Grid from "@material-ui/core/Grid";
 
@@ -8,82 +9,159 @@ import InputField from "../../../components/Form/Input";
 import CheckboxField from "../../../components/Form/Checkbox";
 import SelectField from "../../../components/Form/Select";
 import { internationalPrefix } from "../../../helpers/internationalPrefix";
+import {Button} from "@material-ui/core";
 
-import { FormikProps } from "formik";
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "./schema";
+import {schoolType} from "../../../helpers/schoolType";
 
-interface IProps {
-  formik: FormikProps<any>;
-}
+const Form = ({  value }) => {
+    const classes = useStyles();
 
-const Form: React.FC<IProps> = ({ formik, value }) => {
-  const classes = useStyles();
-  return (
-    <div className={classes.form}>
-      <div className="form">
-        <InputField
-          label="Nome"
-          placeholder="Nome completo"
-          formik={formik}
-          onChange={formik.handleChange}
-          value={formik.values.label}
-        />
-        <Grid container className="container">
-          <Grid item xs={12} sm={9} md={8} lg={8} xl={8} className="grid">
-            <SelectField
-              label="Celular"
-              placeholder="+55"
-              options={internationalPrefix}
-              name="location"
-              onChange={(value) =>
-                formik.setFieldValue("location", value.value)
-              }
-              value={formik.values.location}
-            />
-            <div id="phone-input">
-              <InputField label="" placeholder="(00) 00000-0000" />
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={3} md={4} lg={4} xl={4}>
-            <SelectField label="Tipo da escola" placeholder="Selecione" />
-          </Grid>
-        </Grid>
-        <InputField label="E-mail" placeholder="email@email.com.br" />
-        <InputField label="Senha" placeholder="Senha de 6 dígitos" />
-        {value === "/teacher" ? (
-          <p>Sua senha deve conter pelo menos 6 dígitos. </p>
-        ) : null}
-        {value === "/manager" ? (
-          <p>Sua senha deve conter pelo menos 6 dígitos. </p>
-        ) : null}
-        {value === "/parents" ? (
-          <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
+    const { handleSubmit, control, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+    const onSubmit = data => {
+        console.log(data);
+    };
+
+    return (
+        <div className={classes.form}>
+            <form onSubmit={handleSubmit(onSubmit)} className="form">
+                <Controller
+                    name="name"
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                        <InputField
+                            label="Nome"
+                            placeholder="Nome completo"
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                />
+                <p className="error">{errors.name?.message}</p>
+                <Grid container className="container">
+                    <Grid item xs={12} sm={9} md={7} lg={7} xl={7} className="grid">
+                        <Controller
+                            name="prefix"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <SelectField
+                                    label="Celular"
+                                    placeholder="+55"
+                                    options={internationalPrefix}
+                                />
+                            )}
+                        />
+                        <Controller
+                            name="phone"
+                            control={control}
+                            render={({ field: { onChange, value } }) => (
+                                <InputField
+                                    placeholder="(00) 00000-0000"
+                                    value={value}
+                                    onChange={onChange}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={3} md={5} lg={5} xl={5}>
+                        <Controller
+                            name="school_type"
+                            control={control}
+                            defaultValue=""
+                            render={({ field: { onChange, value } }) => (
+                                <SelectField
+                                    label="Tipo da escola"
+                                    placeholder="Selecione"
+                                    value={value}
+                                    onChange={onChange}
+                                    options={schoolType}
+                                />
+                            )}
+                        />
+                        <p className="error">{errors.school_type?.message}</p>
+                    </Grid>
+                </Grid>
+                <Controller
+                    name="email"
+                    control={control}
+                    defaultValue=""
+                    render={({ field: { onChange, value } }) => (
+                        <InputField
+                            label="E-mail"
+                            placeholder="email@email.com.br"
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                />
+                <p className="error">{errors.email?.message}</p>
+                <Controller
+                    name="password"
+                    control={control}
+                    defaultValue=""
+                    render={({ field: { onChange, value } }) => (
+                        <InputField
+                            label="Senha"
+                            placeholder="Senha de 6 dígitos"
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                />
+                <p className="error">{errors.name?.message}</p>
+                {value === "/teacher" ? (
+                    <p>Sua senha deve conter pelo menos 6 dígitos. </p>
+                ) : null}
+                {value === "/manager" ? (
+                    <p>Sua senha deve conter pelo menos 6 dígitos. </p>
+                ) : null}
+                {value === "/parents" ? (
+                    <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
             <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
               Sua criança vai participar do projeto este ano?
             </span>
-            <div style={{ display: "flex" }}>
-              <CheckboxField /> Sim
-              <CheckboxField /> Não
-            </div>
-          </div>
-        ) : null}
-        <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
-          <CheckboxField />
-          <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
+                        <div style={{ display: "flex" }}>
+                            <CheckboxField /> Sim
+                            <CheckboxField /> Não
+                        </div>
+                    </div>
+                ) : null}
+                <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
+                    <CheckboxField />
+                    <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
             Li e aceito os
             <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
               {" "}
-              Termos de Uso
+                Termos de Uso
             </NavLink>{" "}
-            e a
+                        e a
             <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
               {" "}
-              Política de Privacidade.
+                Política de Privacidade.
             </NavLink>
           </span>
+                </div>
+                <div className="buttons">
+                    <Button
+                        className="first-button"
+                        style={{ color: "#FFF" }}
+                        type="submit"
+                    >
+                        Cadastrar
+                    </Button>
+                    <NavLink to="/">
+                        <Button className="second-button" style={{ color: "#6C57A8" }}>
+                            Voltar
+                        </Button>
+                    </NavLink>
+                </div>
+            </form>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default memo(Form);
