@@ -164,8 +164,18 @@ const useStyles = makeStyles((theme) =>
         color: "#6C57A8",
         textAlign: "center",
         marginTop: "0",
-        [theme.breakpoints.down("xl")]: {
+        [theme.breakpoints.up("xl")]: {
           display: "none",
+        },
+        [theme.breakpoints.up("xs")]: {
+          display: "revert",
+        },
+        [theme.breakpoints.up("sm")]: {
+          display: "revert",
+        },
+        [theme.breakpoints.up("md")]: {
+          display: "revert",
+          marginTop: "0",
         },
       },
       "& a": {
