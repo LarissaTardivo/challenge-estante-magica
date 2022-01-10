@@ -167,6 +167,9 @@ const useStyles = makeStyles((theme) =>
         [theme.breakpoints.up("xl")]: {
           display: "none",
         },
+        [theme.breakpoints.up("lg")]: {
+          display: "none",
+        },
         [theme.breakpoints.up("xs")]: {
           display: "revert",
         },
@@ -174,8 +177,7 @@ const useStyles = makeStyles((theme) =>
           display: "revert",
         },
         [theme.breakpoints.up("md")]: {
-          display: "revert",
-          marginTop: "0",
+          display: "none",
         },
       },
       "& a": {
