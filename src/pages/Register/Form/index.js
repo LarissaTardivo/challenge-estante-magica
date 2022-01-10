@@ -25,8 +25,15 @@ const Form = ({  value }) => {
     });
 
     const onSubmit = data => {
-        console.log(data);
-        return window.location.href="/welcome";
+        const userEmail = localStorage.getItem('User');
+
+        if (userEmail === null) {
+            localStorage.setItem('User', data.email);
+            return window.location.href="/welcome";
+        }
+        else {
+            return window.location.href="/error";
+        }
     };
 
     return (
