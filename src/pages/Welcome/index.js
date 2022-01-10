@@ -1,36 +1,58 @@
 import React, { memo } from "react";
 
+import { IoClose } from "react-icons/io5";
 import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
+import DrawingIcon from "../../assets/Images/drawing-icon.png";
 
-import Drawingicon from "../../assets/Images/drawing-icon.png";
+import { NavLink } from "react-router-dom";
 
 import useStyles from "./styles";
-import {IoClose} from "react-icons/io5";
-import {Button} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
+
+const previousPath = document.referrer
+  .replace(/^[^:]+:\/\/[^/]+/, "")
+  .replace(/#.*/, "");
 
 const Welcome: React.FC = () => {
-
   const classes = useStyles();
   return (
     <div className={classes.welcome}>
       <Grid item xs={12} className="content">
         <div className="card">
-          <div style={{ textAlign: "right", cursor: "pointer", margin: '1rem 2rem 0 0' }}>
+          <div id="close-icon">
             <IoClose color="#BBB4B4" size="35px" />
           </div>
-          <img src={Drawingicon} alt="" />
-          <div className="box"/>
-          <h3>Parabéns</h3>
-          <div className="first-info">
-            <span>
-              Você faz parte do maior projeto de leitura e escrita da América Latina! Seu próximo passo é <br/> <strong>criar sua primeira turma</strong>
-            </span>
-          </div>
-          <br/>
+          {previousPath === "/parents" ? (
+            <div>
+              <img className="for-parents" src={DrawingIcon} alt=""/>
+              <h3>Cadastro confirmado!</h3>
+              <div className="parents-info">
+                  <span className="parents-text">
+                      Obrigada por incentivar e fazer parte do maior projeto de {" "}
+                      <strong>leitura e escrita da América Latina.</strong> Fique de
+                      olho em seu e-mail para não perder nossos conteúdos!
+                  </span>
+                <Button className="back-btn">Voltar para o site</Button>
+              </div>
+            </div>
+          ) : (
+            <div>
+                <img className="image" src={DrawingIcon} alt=""/>
+                <h3>Parabéns</h3>
+                <div className="box" />
+                <div className="first-info">
+                    <span>
+                      Você faz parte do maior projeto de leitura e escrita da
+                      América Latina! Seu próximo passo é <br />{" "}
+                      <strong>criar sua primeira turma</strong>
+                    </span>
+                </div>
+            </div>
+          )}
           <div className="second-info">
             <span>
-              Se quiser criar uma nova conta, utilize um e-mail diferente.
+              Baixe o aplicativo da Estante Mágica ou faça login pelo
+              computador.
             </span>
           </div>
           <div className="mobile-buttons">
@@ -43,7 +65,7 @@ const Welcome: React.FC = () => {
           </div>
         </div>
       </Grid>
-      <NavLink to="">
+      <NavLink to="#">
         <p>Retornar para o site</p>
       </NavLink>
     </div>
