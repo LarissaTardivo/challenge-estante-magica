@@ -5,7 +5,9 @@ import "@fontsource/source-sans-pro";
 const useStyles = makeStyles((theme) =>
   createStyles({
     error: {
-      backgroundColor: "#ECE9F5",
+      "& *": {
+        fontFamily: "Source Sans Pro",
+      },
       "& h3": {
         fontFamily: "Montserrat",
         color: "#6C57A8",
@@ -50,90 +52,97 @@ const useStyles = makeStyles((theme) =>
         marginTop: "-74px",
         [theme.breakpoints.down("md")]: {
           marginTop: "-60px",
-        }
+        },
       },
       "& .first-info, .second-info": {
-        fontFamily: "Source Sans Pro",
         color: "#505050",
         fontSize: "16px",
       },
       "& .first-info": {
-        margin: '0 12rem',
+        margin: "0 12rem",
         [theme.breakpoints.down("xs")]: {
-          margin: '0 2rem'
+          margin: "0 2rem",
         },
       },
       "& .second-info": {
-        margin: '0 10rem',
+        margin: "0 10rem",
         [theme.breakpoints.down("xs")]: {
-          margin: '0 2rem'
+          margin: "0 2rem",
         },
       },
       "& .first-button": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
+        fontSize: "16px",
+        fontWeight: "700",
         backgroundColor: "#FFF",
         width: "240px",
         height: "40px",
         textTransform: "capitalize",
         borderRadius: "40px",
         border: "2px solid #6C57A8",
-        margin: '0 0.5rem'
+        margin: "0 0.5rem",
       },
       "& .second-button": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
+        fontSize: "16px",
+        fontWeight: "700",
         backgroundColor: "#6C57A8",
         width: "240px",
         height: "40px",
         textTransform: "capitalize",
         borderRadius: "40px",
-        margin: '0 0.5rem',
+        margin: "0 0.5rem",
         [theme.breakpoints.down("xs")]: {
-          display: "none"
+          display: "none",
         },
       },
-      "& .second-button:hover": {
-        backgroundColor: '#4C3A82'
+      "& .second-button:hover, .mob-btn:hover": {
+        backgroundColor: "#4C3A82",
       },
       "& .buttons": {
         alignItems: "center",
-        margin: '1rem 0',
+        margin: "1rem 0",
         [theme.breakpoints.down("xs")]: {
-          margin: '0 0 1rem 0',
-        }
+          margin: "0 0 1rem 0",
+        },
       },
       "& .mob-btn": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
+        fontSize: "16px",
+        fontWeight: "700",
         backgroundColor: "#6C57A8",
         width: "240px",
         height: "40px",
         textTransform: "capitalize",
         borderRadius: "40px",
-        marginBottom: '1rem',
+        marginBottom: "1rem",
         [theme.breakpoints.down("xl")]: {
-          display: "none"
+          display: "none",
         },
         [theme.breakpoints.down("xs")]: {
-          display: "inline-flex"
-        }
+          display: "inline-flex",
+        },
       },
       "& .mobile-buttons": {
         [theme.breakpoints.down("xs")]: {
-          marginTop: '1rem'
-        }
+          marginTop: "1rem",
+        },
       },
-      "& p":{
-        color: '#6C57A8',
-        fontFamily: "Source Sans Pro",
+      "& p": {
+        color: "#6C57A8",
         textAlign: "center",
         marginTop: "0",
-        [theme.breakpoints.down("xl")]: {
-          display: "none"
+        [theme.breakpoints.up("xl")]: {
+          display: "none",
+        },
+        [theme.breakpoints.up("lg")]: {
+          display: "none",
+        },
+        [theme.breakpoints.up("xs")]: {
+          display: "revert",
+        },
+        [theme.breakpoints.up("sm")]: {
+          display: "revert",
+        },
+        [theme.breakpoints.up("md")]: {
+          display: "none",
         },
       },
       "& a": {
