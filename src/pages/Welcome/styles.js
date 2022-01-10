@@ -5,19 +5,8 @@ import "@fontsource/source-sans-pro";
 const useStyles = makeStyles((theme) =>
   createStyles({
     welcome: {
-      backgroundColor: "#ECE9F5",
-      "& h3": {
-        fontFamily: "Montserrat",
-        color: "#6C57A8",
-        fontSize: "24px",
-        margin: "1rem 0 0.5rem 0",
-        [theme.breakpoints.down("xs")]: {
-          fontSize: "24px",
-          margin: "0.5rem 3rem",
-        },
-        [theme.breakpoints.down("md")]: {
-          margin: "0.2rem 3rem",
-        },
+      "& *": {
+        fontFamily: "Source Sans Pro",
       },
       "& .content": {
         display: "flex",
@@ -49,12 +38,30 @@ const useStyles = makeStyles((theme) =>
           marginTop: "3rem",
         },
       },
-      "& img": {
+      "& #close-icon": {
+        textAlign: "right",
+        cursor: "pointer",
+        margin: "1rem 2rem 0 0",
+      },
+      "& h3": {
+        fontFamily: "Montserrat",
+        color: "#6C57A8",
+        fontSize: "24px",
+        margin: "1rem 0 0.5rem 0",
+        [theme.breakpoints.down("xs")]: {
+          fontSize: "24px",
+          margin: "0.5rem 3rem",
+        },
+        [theme.breakpoints.down("md")]: {
+          margin: "0.2rem 3rem",
+        },
+      },
+      "& .image": {
         [theme.breakpoints.down("xl")]: {
-          display: "none"
+          display: "none",
         },
         [theme.breakpoints.down("sm")]: {
-          display: "initial"
+          display: "initial",
         },
         [theme.breakpoints.down("md")]: {
           marginTop: "-103px",
@@ -65,96 +72,100 @@ const useStyles = makeStyles((theme) =>
         height: "200px",
         display: "inline-flex",
         marginTop: "0.5rem",
-        backgroundColor: '#E4E4E4',
+        backgroundColor: "#E4E4E4",
         [theme.breakpoints.down("sm")]: {
-          display: "none"
+          display: "none",
+        },
+      },
+      "& .for-parents": {
+        marginTop: "-103px",
+      },
+      "& .parents-info": {
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        alignItems: "center",
+        color: "#747474",
+      },
+      "& .parents-text": {
+        margin: "0 1.5rem 1rem 1.5rem",
+      },
+      "& .back-btn": {
+        color: "#FFF",
+        backgroundColor: "#6C57A8",
+        borderRadius: "40px",
+        width: "240px",
+        marginBottom: "1.5rem",
+        fontWeight: "700",
+        textTransform: "capitalize",
+        [theme.breakpoints.down("xs")]: {
+          marginBottom: "0",
+        },
+        [theme.breakpoints.down("sm")]: {
+          marginBottom: "0.5rem",
+        },
+      },
+      "& .first-info": {
+        margin: "0 7rem 2rem 7rem",
+        [theme.breakpoints.down("xs")]: {
+          margin: "0 2rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+          display: "inline-flex",
+          marginBottom: "0.5rem",
         },
       },
       "& .first-info, .second-info": {
-        fontFamily: "Source Sans Pro",
         color: "#505050",
         fontSize: "16px",
       },
-      "& .first-info": {
-        margin: '0 7rem',
-        [theme.breakpoints.down("xs")]: {
-          margin: '0 2rem'
-        },
-      },
       "& .second-info": {
-        margin: '0 10rem',
+        margin: "0 10rem",
         [theme.breakpoints.down("xl")]: {
-          display: "none"
+          display: "none",
         },
         [theme.breakpoints.down("xs")]: {
-          margin: '0 2rem'
+          margin: "0 2rem",
         },
-      },
-      "& .first-button": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
-        backgroundColor: "#FFF",
-        width: "240px",
-        height: "40px",
-        textTransform: "capitalize",
-        borderRadius: "40px",
-        border: "2px solid #6C57A8",
-        margin: '0 0.5rem'
-      },
-      "& .second-button": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
-        backgroundColor: "#6C57A8",
-        width: "240px",
-        height: "40px",
-        textTransform: "capitalize",
-        borderRadius: "40px",
-        margin: '0 0.5rem',
-        [theme.breakpoints.down("xs")]: {
-          display: "none"
-        },
-      },
-      "& .second-button:hover": {
-        backgroundColor: '#4C3A82'
-      },
-      "& .buttons": {
-        alignItems: "center",
-        margin: '1rem 0',
-        [theme.breakpoints.down("xs")]: {
-          margin: '0 0 1rem 0',
-        }
-      },
-      "& .mob-btn": {
-        fontSize: '16px',
-        fontFamily: "Source Sans Pro",
-        fontWeight: '700',
-        backgroundColor: "#6C57A8",
-        width: "240px",
-        height: "40px",
-        textTransform: "capitalize",
-        borderRadius: "40px",
-        marginBottom: '1rem',
-        [theme.breakpoints.down("xl")]: {
-          display: "none"
-        },
-        [theme.breakpoints.down("xs")]: {
-          display: "inline-flex"
-        }
       },
       "& .mobile-buttons": {
+        marginBottom: "1rem",
         [theme.breakpoints.down("xs")]: {
-          marginTop: '1rem'
-        }
+          marginTop: "1rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+          display: "inline-grid",
+          marginTop: "0",
+        },
       },
-      "& p":{
-        color: '#6C57A8',
-        fontFamily: "Source Sans Pro",
+      "& .mob-btn": {
+        fontSize: "16px",
+        fontWeight: "700",
+        backgroundColor: "#6C57A8",
+        width: "240px",
+        height: "40px",
+        textTransform: "capitalize",
+        borderRadius: "40px",
+        [theme.breakpoints.down("xl")]: {
+          display: "none",
+        },
+        [theme.breakpoints.down("xs")]: {
+          display: "inline-flex",
+        },
+        [theme.breakpoints.down("sm")]: {
+          display: "inline-flex",
+          margin: "0.5rem",
+        },
+      },
+      "& .mob-btn:hover": {
+        backgroundColor: "#4C3A82",
+      },
+      "& p": {
+        color: "#6C57A8",
         textAlign: "center",
         marginTop: "0",
         [theme.breakpoints.down("xl")]: {
-          display: "none"
+          display: "none",
         },
       },
       "& a": {
