@@ -81,9 +81,6 @@ const useStyles = makeStyles((theme) =>
         },
       },
       "& .buttons": {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
         [theme.breakpoints.down("xl")]: {
           flexDirection: "row-reverse",
           display: "inline-flex",
@@ -100,8 +97,7 @@ const useStyles = makeStyles((theme) =>
           margin: "1rem 0 2rem 0",
         },
         [theme.breakpoints.down("xs")]: {
-          flexDirection: "column",
-          display: "flex",
+          flexDirection: "column"
         },
       },
       "& .box": {

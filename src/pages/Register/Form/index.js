@@ -157,19 +157,21 @@ const Form = ({  value }) => {
             </NavLink>
           </span>
                 </div>
-                <div className="buttons">
-                    <Button
-                        className="first-button"
-                        style={{ color: "#FFF" }}
-                        type="submit"
-                    >
-                        Cadastrar
-                    </Button>
-                    <NavLink to="/">
-                        <Button className="second-button" style={{ color: "#6C57A8" }}>
-                            Voltar
+                <div style={{ textAlign: "center" }}>
+                    <div className="buttons">
+                        <Button
+                            className="first-button"
+                            style={{ color: "#FFF" }}
+                            type="submit"
+                        >
+                            Cadastrar
                         </Button>
-                    </NavLink>
+                        <NavLink to="/">
+                            <Button className="second-button" style={{ color: "#6C57A8" }}>
+                                Voltar
+                            </Button>
+                        </NavLink>
+                    </div>
                 </div>
             </form>
         </div>
