@@ -5,12 +5,14 @@ import "@fontsource/source-sans-pro";
 const useStyles = makeStyles((theme) =>
   createStyles({
     main: {
-      backgroundColor: "#ECE9F5",
+      "& *": {
+        fontFamily: "Source Sans Pro",
+      },
       "& h3": {
-        fontFamily: "Montserrat",
         color: "#6C57A8",
         fontSize: "32px",
         margin: "0",
+        fontFamily: "Montserrat"
       },
       "& .content": {
         display: "flex",
@@ -65,11 +67,12 @@ const useStyles = makeStyles((theme) =>
         margin: "1rem",
       },
       "& .only-item > span, span": {
-        fontFamily: "Source Sans Pro",
         color: "#5E4F9C",
         fontWeight: "700",
         fontSize: "16px",
-        marginTop: "0.3rem",
+      },
+      "& img": {
+        marginTop: "0.5rem",
       },
       "& a": {
         textDecoration: "none",
