@@ -1,12 +1,13 @@
 import React, { memo } from "react";
 
 import Grid from "@material-ui/core/Grid";
+import {Button} from "@material-ui/core";
 
 import DrawingIcon from "../../assets/Images/drawing-icon.png";
 
-import useStyles from "./styles";
-import {Button} from "@material-ui/core";
 import {NavLink} from "react-router-dom";
+
+import useStyles from "./styles";
 
 const Error: React.FC = () => {
 
