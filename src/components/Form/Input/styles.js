@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) =>
         fontFamily: "Source Sans Pro",
         color: "#505050",
         fontSize: "16px",
-      },
+      }
     },
   })
 );
