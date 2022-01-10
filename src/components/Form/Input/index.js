@@ -15,6 +15,7 @@ const InputField: React.FC<IProps> = ({
   icon,
   name,
   label,
+  type,
   placeholder,
   ...props
 }) => {
@@ -26,6 +27,7 @@ const InputField: React.FC<IProps> = ({
         onChange={onChange}
         name={name}
         placeholder={placeholder}
+        type={type}
       />
     </div>
   );
