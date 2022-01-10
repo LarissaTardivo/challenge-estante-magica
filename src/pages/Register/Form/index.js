@@ -44,8 +44,12 @@ const Form = ({  value }) => {
                     )}
                 />
                 <p className="error">{errors.name?.message}</p>
-                <div style={{ marginLeft: "54px", marginBottom: "-24px"}}>
-                    <img src={InterrogationIcon} alt=""/>
+                <div className="box">
+                    <p className="icon"><img src={InterrogationIcon} alt=""/></p>
+                    <div className="popup">
+                        <strong style={{ color: "#6C57A8" }}>Por que precisamos do seu número de celular?</strong>
+                        <div> Nós fazemos um acompanhamento do seu projeto pelo WhatsApp. Vamos enviar as orientações de cada etapa e tirar suas dúvidas por lá!</div>
+                    </div>
                 </div>
                 <Grid container className="container">
                     <Grid item xs={12} sm={9} md={7} lg={7} xl={7} className="grid">
