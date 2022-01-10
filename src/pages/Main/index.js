@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { NavLink } from "react-router-dom";
 
 import { IoClose } from "react-icons/io5";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import TeacherIcon from "../../assets/Images/icone_prof2.png";
 import ManagerIcon from "../../assets/Images/icone_gestor3.png";
 import ParentsIcon from "../../assets/Images/icone_familia2.png";
+
+import { NavLink } from "react-router-dom";
 
 import useStyles from "./styles";
 
@@ -22,20 +23,21 @@ const Main: React.FC = () => {
           <h3>Cadastre-se como:</h3>
           <div className="items">
             <NavLink to="teacher" className="only-item">
-              <img src={TeacherIcon} alt="teacher-icon" />
+              <div style={{ height: "100%" }}>
+                <img src={TeacherIcon} alt="teacher-icon" />
+              </div>
               <span>Professor(a)</span>
             </NavLink>
             <NavLink to="manager" className="only-item">
-              <img
-                src={ManagerIcon}
-                alt="manager-icon"
-                width={69}
-                height={78}
-              />
+              <div style={{ height: "100%" }}>
+                <img src={ManagerIcon} alt="manager-icon" />
+              </div>
               <span>Gestor(a)</span>
             </NavLink>
             <NavLink to="parents" className="only-item">
-              <img src={ParentsIcon} alt="parents-icon" />
+              <div style={{ height: "100%" }}>
+                <img src={ParentsIcon} alt="parents-icon" />
+              </div>
               <span>Responsável</span>
             </NavLink>
             <span style={{ color: "#747474" }}>
