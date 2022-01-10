@@ -26,6 +26,7 @@ const Form = ({  value }) => {
 
     const onSubmit = data => {
         console.log(data);
+        return window.location.href="/welcome";
     };
 
     return (
