@@ -1,188 +1,82 @@
-import React, {memo} from "react";
-import { useForm, Controller } from 'react-hook-form';
-
-import Grid from "@material-ui/core/Grid";
+import React, { memo } from "react";
+import { useForm } from "react-hook-form";
 
 import useStyles from "./styles";
 import { NavLink } from "react-router-dom";
-import InputField from "../../../components/Form/Input";
 import CheckboxField from "../../../components/Form/Checkbox";
-import SelectField from "../../../components/Form/Select";
-import { internationalPrefix } from "../../../helpers/internationalPrefix";
-import {Button} from "@material-ui/core";
-
-import InterrogationIcon from "../../../assets/Images/interrogation-icon.png";
+import {Button, FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
-import {schoolType} from "../../../helpers/schoolType";
+import Fields from "./Fields";
 
-const Form = ({  value }) => {
-    const classes = useStyles();
+const Form = ({ value }) => {
+  const { handleSubmit, control, formState: { errors } } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const { handleSubmit, control, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
-    });
+  const onSubmit = (data) => {
+    const userEmail = localStorage.getItem("User");
 
-    const onSubmit = data => {
-        const userEmail = localStorage.getItem('User');
-
-        if (userEmail === null) {
-            localStorage.setItem('User', data.email);
-            return window.location.href="/welcome";
-        }
-        else {
-            return window.location.href="/error";
-        }
-    };
-
-    return (
-        <div className={classes.form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="form">
-                <Controller
-                    name="name"
-                    control={control}
-                    render={({ field: { onChange, value } }) => (
-                        <InputField
-                            label="Nome"
-                            placeholder="Nome completo"
-                            value={value}
-                            onChange={onChange}
-                        />
-                    )}
-                />
-                <p className="error">{errors.name?.message}</p>
-                <div className="box">
-                    <p className="icon"><img src={InterrogationIcon} alt=""/></p>
-                    <div className="popup">
-                        <strong style={{ color: "#6C57A8" }}>Por que precisamos do seu número de celular?</strong>
-                        <div> Nós fazemos um acompanhamento do seu projeto pelo WhatsApp. Vamos enviar as orientações de cada etapa e tirar suas dúvidas por lá!</div>
-                    </div>
-                </div>
-                <Grid container className="container">
-                    <Grid item xs={12} sm={9} md={7} lg={7} xl={7} className="grid">
-                        <Controller
-                            name="prefix"
-                            control={control}
-                            render={({ field: { onChange, value } }) => (
-                                <SelectField
-                                    label="Celular"
-                                    placeholder="+55"
-                                    options={internationalPrefix}
-                                />
-                            )}
-                        />
-                        <div id="phone-input">
-                            <Controller
-                                name="phone"
-                                control={control}
-                                render={({ field: { onChange, value } }) => (
-                                    <InputField
-                                        placeholder="(00) 00000-0000"
-                                        value={value}
-                                        onChange={onChange}
-                                    />
-                                )}
-                            />
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={3} md={5} lg={5} xl={5}>
-                        <Controller
-                            name="school_type"
-                            control={control}
-                            defaultValue=""
-                            render={({ field: { onChange, value } }) => (
-                                <SelectField
-                                    label="Tipo da escola"
-                                    placeholder="Selecione"
-                                    value={value}
-                                    onChange={onChange}
-                                    options={schoolType}
-                                />
-                            )}
-                        />
-                        <p className="error">{errors.school_type?.message}</p>
-                    </Grid>
-                </Grid>
-                <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                        <InputField
-                            label="E-mail"
-                            placeholder="email@email.com.br"
-                            value={value}
-                            onChange={onChange}
-                        />
-                    )}
-                />
-                <p className="error">{errors.email?.message}</p>
-                <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({ field: { onChange, value } }) => (
-                        <InputField
-                            label="Senha"
-                            placeholder="Senha de 6 dígitos"
-                            value={value}
-                            onChange={onChange}
-                        />
-                    )}
-                />
-                <p className="error">{errors.name?.message}</p>
-                {value === "/teacher" ? (
-                    <p>Sua senha deve conter pelo menos 6 dígitos. </p>
-                ) : null}
-                {value === "/manager" ? (
-                    <p>Sua senha deve conter pelo menos 6 dígitos. </p>
-                ) : null}
-                {value === "/parents" ? (
-                    <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
-            <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
-              Sua criança vai participar do projeto este ano?
-            </span>
-                        <div style={{ display: "flex" }}>
-                            <CheckboxField /> Sim
-                            <CheckboxField /> Não
-                        </div>
-                    </div>
-                ) : null}
-                <div style={{ display: "flex", margin: "1.5rem 0 1rem 0" }}>
-                    <CheckboxField />
-                    <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
+    if (userEmail === null) {
+      localStorage.setItem("User", data.email);
+      return (window.location.href = "/welcome");
+    } else {
+      return (window.location.href = "/error");
+    }
+  };
+  const classes = useStyles();
+  return (
+    <div className={classes.form}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Fields control={control} errors={errors} />
+        <div style={{ display: "flex", margin: "0 0 1rem 6rem" }}>
+          <CheckboxField />
+          <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
             Li e aceito os
             <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
               {" "}
-                Termos de Uso
+              Termos de Uso
             </NavLink>{" "}
-                        e a
+            e a
             <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
               {" "}
-                Política de Privacidade.
+              Política de Privacidade.
             </NavLink>
           </span>
-                </div>
-                <div style={{ textAlign: "center" }}>
-                    <div className="buttons">
-                        <Button
-                            className="first-button"
-                            style={{ color: "#FFF" }}
-                            type="submit"
-                        >
-                            Cadastrar
-                        </Button>
-                        <NavLink to="/">
-                            <Button className="second-button" style={{ color: "#6C57A8" }}>
-                                Voltar
-                            </Button>
-                        </NavLink>
-                    </div>
-                </div>
-            </form>
         </div>
-    );
+        {value === "/parents" ? (
+          <div style={{ display: "-webkit-box", marginLeft: "6rem" }}>
+            <span style={{ color: "#3A3A3A", fontWeight: "700" }}>
+              Sua criança vai participar do projeto este ano?
+            </span>
+            <RadioGroup
+                style={{ display: "initial", marginLeft: "1rem" }}
+            >
+              <FormControlLabel value="yes" control={<Radio />} label="Sim" />
+              <FormControlLabel value="no" control={<Radio />} label="Não" />
+            </RadioGroup>
+          </div>
+        ) : null}
+        <div style={{ textAlign: "center" }}>
+          <div className="buttons">
+            <Button
+              className="first-button"
+              style={{ color: "#FFF" }}
+              type="submit"
+            >
+              Cadastrar
+            </Button>
+            <NavLink to="/">
+              <Button className="second-button" style={{ color: "#6C57A8" }}>
+                Voltar
+              </Button>
+            </NavLink>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default memo(Form);
