@@ -33,7 +33,7 @@ const Register: React.FC = () => {
           </div>
           {value === "/parents" ? (
             <div className="parents-info">
-              <span style={{ fontWeight: "400" }}>
+              <span style={{ fontWeight: "400", color: "#747474" }}>
                 Só é possível aplicar o projeto por uma escola. Mas você pode
                 acompanhar tudo de perto, recebendo nossos conteúdos!
               </span>
