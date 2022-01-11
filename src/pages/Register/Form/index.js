@@ -1,13 +1,15 @@
 import React, { memo } from "react";
+
+import { Button } from "@material-ui/core";
+
 import { useForm } from "react-hook-form";
-
-import useStyles from "./styles";
 import { NavLink } from "react-router-dom";
-import {Button} from "@material-ui/core";
-
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import schema from "./schema";
 import Fields from "./Fields";
+
+import useStyles from "./styles";
 
 const Form = ({ value }) => {
   const { handleSubmit, control, formState: { errors } } = useForm({
@@ -28,7 +30,7 @@ const Form = ({ value }) => {
   return (
     <div className={classes.form}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Fields control={control} errors={errors} value={value}/>
+        <Fields control={control} errors={errors} value={value} />
         <div style={{ textAlign: "center" }}>
           <div className="buttons">
             <Button
