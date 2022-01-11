@@ -32,7 +32,9 @@ const Welcome: React.FC = () => {
                       <strong>leitura e escrita da América Latina.</strong> Fique de
                       olho em seu e-mail para não perder nossos conteúdos!
                   </span>
-                <Button className="back-btn">Voltar para o site</Button>
+                <NavLink to="/">
+                  <Button className="back-btn">Voltar para o site</Button>
+                </NavLink>
               </div>
             </div>
           ) : (
