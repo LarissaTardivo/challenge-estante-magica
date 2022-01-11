@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 
 import useStyles from "./styles";
 import { NavLink } from "react-router-dom";
-import CheckboxField from "../../../components/Form/Checkbox";
-import {Button, FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
@@ -29,35 +28,7 @@ const Form = ({ value }) => {
   return (
     <div className={classes.form}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Fields control={control} errors={errors} />
-        <div className="check">
-          <CheckboxField />
-          <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
-            Li e aceito os
-            <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
-              {" "}
-              Termos de Uso
-            </NavLink>{" "}
-            e a
-            <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
-              {" "}
-              Política de Privacidade.
-            </NavLink>
-          </span>
-        </div>
-        {value === "/parents" ? (
-          <div className="radio">
-            <span style={{ color: "#3A3A3A", fontWeight: "700" }}>
-              Sua criança vai participar do projeto este ano?
-            </span>
-            <RadioGroup
-                style={{ display: "initial", marginLeft: "1rem" }}
-            >
-              <FormControlLabel value="yes" control={<Radio />} label="Sim" />
-              <FormControlLabel value="no" control={<Radio />} label="Não" />
-            </RadioGroup>
-          </div>
-        ) : null}
+        <Fields control={control} errors={errors} value={value}/>
         <div style={{ textAlign: "center" }}>
           <div className="buttons">
             <Button
