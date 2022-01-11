@@ -30,7 +30,7 @@ const Form = ({ value }) => {
     <div className={classes.form}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Fields control={control} errors={errors} />
-        <div style={{ display: "flex", margin: "0 0 1rem 6rem" }}>
+        <div className="check">
           <CheckboxField />
           <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
             Li e aceito os
@@ -46,7 +46,7 @@ const Form = ({ value }) => {
           </span>
         </div>
         {value === "/parents" ? (
-          <div style={{ display: "-webkit-box", marginLeft: "6rem" }}>
+          <div className="radio">
             <span style={{ color: "#3A3A3A", fontWeight: "700" }}>
               Sua criança vai participar do projeto este ano?
             </span>
