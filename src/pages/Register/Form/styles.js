@@ -63,11 +63,11 @@ const useStyles = makeStyles((theme) =>
         },
         [theme.breakpoints.down("xs")]: {
           flexDirection: "column",
-        }
+        },
       },
       "& .MuiRadio-colorSecondary.Mui-checked": {
-        color: "#6C57A8"
-      }
+        color: "#6C57A8",
+      },
     },
   })
 );

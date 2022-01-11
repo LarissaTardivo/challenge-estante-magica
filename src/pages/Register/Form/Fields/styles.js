@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) =>
       },
       "& .css-qc6sy-singleValue, .css-26l3qy-menu": {
         color: "#747474",
-      }
+      },
     },
   })
 );
