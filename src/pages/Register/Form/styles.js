@@ -67,20 +67,6 @@ const useStyles = makeStyles((theme) =>
       },
       "& .MuiRadio-colorSecondary.Mui-checked": {
         color: "#6C57A8"
-      },
-      "& .check": {
-        display: "flex",
-        margin: "0 0 1rem 6rem",
-        [theme.breakpoints.down("xs")]: {
-          margin: "0 1rem 1.5rem 1rem",
-        },
-      },
-      "& .radio": {
-        display: "-webkit-box",
-        marginLeft: "6rem",
-        [theme.breakpoints.down("xs")]: {
-        marginLeft: "1rem"
-        },
       }
     },
   })
