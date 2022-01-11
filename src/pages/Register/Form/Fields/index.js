@@ -3,9 +3,7 @@ import { Controller } from "react-hook-form";
 import Grid from "@material-ui/core/Grid";
 
 import useStyles from "./styles";
-import { NavLink } from "react-router-dom";
 import InputField from "../../../../components/Form/Input";
-import CheckboxField from "../../../../components/Form/Checkbox";
 import SelectField from "../../../../components/Form/Select";
 import { internationalPrefix } from "../../../../helpers/internationalPrefix";
 
@@ -14,7 +12,7 @@ import InterrogationIcon from "../../../../assets/Images/interrogation-icon.png"
 import { schoolType } from "../../../../helpers/schoolType";
 import React from "react";
 
-const Fields = ({ value, control, errors }) => {
+const Fields = ({ control, errors }) => {
     const classes = useStyles();
     return (
         <div className={classes.fields}>
@@ -112,6 +110,7 @@ const Fields = ({ value, control, errors }) => {
                     defaultValue=""
                     render={({ field: { onChange, value } }) => (
                         <InputField
+                            name="password"
                             label="Senha"
                             placeholder="Senha de 6 dígitos"
                             value={value}
