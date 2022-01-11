@@ -11,8 +11,11 @@ import InterrogationIcon from "../../../../assets/Images/interrogation-icon.png"
 
 import { schoolType } from "../../../../helpers/schoolType";
 import React from "react";
+import CheckboxField from "../../../../components/Form/Checkbox";
+import {NavLink} from "react-router-dom";
+import {FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
 
-const Fields = ({ control, errors }) => {
+const Fields = ({ control, errors, value }) => {
     const classes = useStyles();
     return (
         <div className={classes.fields}>
@@ -120,6 +123,34 @@ const Fields = ({ control, errors }) => {
                     )}
                 />
                 <p className="error">{errors.password?.message}</p>
+                <div style={{ display: "inline-flex" }}>
+                    <CheckboxField />
+                    <span style={{ color: "#3A3A3A", fontWeight: "normal" }}>
+            Li e aceito os
+            <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
+              {" "}
+                Termos de Uso
+            </NavLink>{" "}
+                        e a
+            <NavLink to="#" style={{ color: "#6C57A8", fontWeight: "700" }}>
+              {" "}
+                Política de Privacidade.
+            </NavLink>
+          </span>
+                </div>
+                {value === "/parents" ? (
+                    <div>
+            <span style={{ color: "#3A3A3A", fontWeight: "700" }}>
+              Sua criança vai participar do projeto este ano?
+            </span>
+                        <RadioGroup
+                            style={{ display: "initial", marginLeft: "1rem" }}
+                        >
+                            <FormControlLabel value="yes" control={<Radio />} label="Sim" />
+                            <FormControlLabel value="no" control={<Radio />} label="Não" />
+                        </RadioGroup>
+                    </div>
+                ) : null}
             </div>
         </div>
     );
